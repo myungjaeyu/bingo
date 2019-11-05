@@ -2,9 +2,12 @@ import { createAction, handleActions } from 'redux-actions'
 import * as types from '../constants'
 import immutable from 'immutability-helper'
 
+import getBingo from '../../services/getBingo'
+
 export const bingoRender = createAction(types.BINGO_RENDER)
 export const bingoClear = createAction(types.BINGO_CLEAR)
 export const bingoCellPaint = createAction(types.BINGO_CELL_PAINT)
+export const bingoCheck = createAction(types.BINGO_CHECK)
 
 const player = { cells: [], paints: [], bingo: [] }
 
@@ -71,6 +74,24 @@ export default handleActions({
                 }
             }
 
+        })
+
+    },
+    [types.BINGO_CHECK]: (state, { payload }) => {
+
+        const { player1, player2 } = state
+
+        return immutable(state, {
+            player1: {
+                bingo: {
+                    $push: getBingo(player1, payload)
+                }
+            },
+            player2: {
+                bingo: {
+                    $push: getBingo(player2, payload)
+                }
+            }
         })
 
     },

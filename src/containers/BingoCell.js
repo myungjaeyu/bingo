@@ -2,19 +2,20 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { bingoCellPaint } from '../store/modules/bingo'
+import { bingoCellPaint, bingoCheck } from '../store/modules/bingo'
 import { appPlayerFlag } from '../store/modules/app'
 
 class BingoCell extends Component {
 
     handleClick = () => {
 
-        const { bingoCellPaint, appPlayerFlag } = this.props 
+        const { bingoCellPaint, bingoCheck, appPlayerFlag } = this.props 
         const { cell, paint } = this.props
 
         if (paint) return alert('이미 체크된 구역입니다.')
 
         bingoCellPaint(cell)
+        bingoCheck(cell)
         appPlayerFlag()
 
     }
@@ -45,7 +46,7 @@ const mapState = ({ bingo }, { type, index }) => {
     })
 }
 
-const mapDispatch = { bingoCellPaint, appPlayerFlag }
+const mapDispatch = { bingoCellPaint, bingoCheck, appPlayerFlag }
 
 export default connect(
     mapState,
