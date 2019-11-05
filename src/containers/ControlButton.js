@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 import { appStart } from '../store/modules/app'
+import { bingoRender } from '../store/modules/bingo'
 
 class ControlButton extends Component {
 
     handleClick = () => {
 
-        const { appStart } = this.props
+        const { appStart, bingoRender } = this.props
 
         appStart()
+        bingoRender()
 
     }
 
@@ -31,7 +33,7 @@ class ControlButton extends Component {
 
 const mapState = ({ app: { start }}) => ({ start })
 
-const mapDispatch = { appStart }
+const mapDispatch = { appStart, bingoRender }
 
 export default connect(
     mapState,
