@@ -6,7 +6,7 @@ import BIngoTable from './BingoTable'
 export default ({ type }) => (
     <section>
 
-        <BingoScore />
+        <BingoScore type={ type } />
 
         <BIngoTable type={ type } rowSize={ 5 } cellSize={ 5 } />
 

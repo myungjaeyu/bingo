@@ -26,6 +26,26 @@
 
     width: 100px;
 
+    text-align: center;
+
+    position: relative;
+
+}
+
+.App article div {
+
+    position: absolute;
+
+    width: 100%;
+
+    bottom: 0;
+
+}
+
+.App article h4 {
+
+    color: #7151fc;
+
 }
 
 .App table {
