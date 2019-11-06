@@ -3,7 +3,7 @@ import './App.css'
 
 import WinnerCard from './containers/WinnerCard'
 import ControlButton from './containers/ControlButton'
-import BingoBoard from './components/BingoBoard'
+import Bingo from './containers/Bingo'
 
 class App extends Component {
     render() {
@@ -14,9 +14,7 @@ class App extends Component {
 
                 <ControlButton />
 
-                <BingoBoard type='player1' />
-
-                <BingoBoard type='player2' />
+                <Bingo />
 
             </div>
         )
