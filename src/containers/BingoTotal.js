@@ -2,24 +2,13 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
-import { bingoWinnerCheck, bingoClear } from '../store/modules/bingo'
-import { appClear } from '../store/modules/app'
+import { bingoWinnerCheck } from '../store/modules/bingo'
 
 class BingoTotal extends Component {
 
     componentDidUpdate() {
 
-        const { bingoWinnerCheck, bingoClear, appClear } = this.props
-        const { winner } = this.props
-
-        if (winner) {
-
-            alert(winner)
-
-            bingoClear()
-            appClear()
-
-        }
+        const { bingoWinnerCheck } = this.props
 
         bingoWinnerCheck()
 
@@ -48,12 +37,11 @@ class BingoTotal extends Component {
 const mapState = ({ bingo }, { type }) => {
 
     return ({
-        winner: bingo.winner,
         total : bingo[type].bingo.length
     })
 }
 
-const mapDispatch = { bingoWinnerCheck, bingoClear, appClear }
+const mapDispatch = { bingoWinnerCheck }
 
 export default connect(
     mapState,
