@@ -3,6 +3,7 @@ import * as types from '../constants'
 import immutable from 'immutability-helper'
 
 import getBingo from '../../services/getBingo'
+import getWinnerCheck from '../../services/getWinnerCheck'
 
 export const bingoRender = createAction(types.BINGO_RENDER)
 export const bingoClear = createAction(types.BINGO_CLEAR)
@@ -106,15 +107,6 @@ export default handleActions({
     [types.BINGO_WINNER_CHECK]: (state) => {
 
         const { player1, player2 } = state
-
-        const getWinnerCheck = (p1, p2) => {
-
-            if (p1 > 4 && p2 > 4) return '무승부입니다'
-            else if (p1 > 4) return 'Player1이 빙고를 완성했습니다.'
-            else if (p2 > 4) return 'Player2이 빙고를 완성했습니다.'
-            else return ''
-
-        }
 
         return immutable(state, { 
             winner: { 
